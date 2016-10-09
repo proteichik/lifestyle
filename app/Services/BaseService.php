@@ -16,11 +16,6 @@ class BaseService implements Service
     protected $repository;
 
     /**
-     * @var string
-     */
-    protected $configPrefix = '';
-
-    /**
      * BaseService constructor.
      * @param ObjectRepository $repository
      */
@@ -86,9 +81,7 @@ class BaseService implements Service
      * @return object
      */
     public function findAll($itemPerPage = null)
-    {
-        $itemPerPage = (!$itemPerPage) ? $this->getByConfig('item_per_page', null) : $itemPerPage;
-        
+    {        
         return $this->repository->findAll($itemPerPage);
     }
 
@@ -107,25 +100,5 @@ class BaseService implements Service
     public function getSelectList(array $order = array())
     {
         return $this->repository->getSelectList($order);
-    }
-
-    /**
-     * @return string
-     */
-    protected function getConfigName()
-    {
-        return sprintf('%s.%s.%s', 'lifestyle', get_class($this), $this->configPrefix);
-    }
-
-    /**
-     * @param $key
-     * @param null $default
-     * @return mixed
-     */
-    protected function getByConfig($key, $default = null)
-    {
-        $key = $this->getConfigName() . '.' . $key;
-
-        return Config::get($key, $default);
     }
 }
