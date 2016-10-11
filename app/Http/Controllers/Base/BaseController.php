@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Base;
 
 use App\Contracts\Service;
 use App\Exceptions\ViewNotFound;
+use App\Http\Controllers\Controller;
 use Config;
 use Illuminate\Http\Request;
 
