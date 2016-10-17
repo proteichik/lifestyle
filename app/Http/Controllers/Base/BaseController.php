@@ -6,9 +6,10 @@ use App\Contracts\Service;
 use App\Exceptions\ViewNotFound;
 use App\Http\Controllers\Controller;
 use Config;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-class BaseController extends Controller
+abstract class BaseController extends Controller
 {
     /**
      * @var Service
@@ -75,6 +76,11 @@ class BaseController extends Controller
     }
 
     /**
+     * @return Model
+     */
+    abstract protected function getModel();
+
+    /**
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws ViewNotFound
@@ -84,5 +90,20 @@ class BaseController extends Controller
         $objects = $this->objectManager->findAll($this->getByConfig('item_per_page'));
 
         return view($this->getView('list'), ['objects' => $objects]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws ViewNotFound
+     */
+    public function showCreateForm(Request $request)
+    {
+        return view($this->getView('create'), [
+            'object' => $this->getModel(),
+            'route' => [
+                $this->getByConfig('form_routes.create'),
+            ],
+        ]);
     }
 }

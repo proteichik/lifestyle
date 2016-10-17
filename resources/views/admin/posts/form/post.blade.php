@@ -1,8 +1,8 @@
 {{ BootForm::open(array('route' => $route)) }}
-{!! BootForm::text('title', 'Заголовок', $object->getTitle()) !!}
-{!! BootForm::textarea('description', 'Описание', $object->getDescription(), ['rows' => 3]) !!}
-{!! BootForm::select('category', 'Категория', $categories, $object->getCategory()->getId()) !!}
-{!! BootForm::textarea('content', 'Текст', $object->getContent(), ['class' => 'tinytext'] )!!}
+{!! BootForm::text('title', 'Заголовок', $object->title) !!}
+{!! BootForm::textarea('description', 'Описание', $object->description, ['rows' => 3]) !!}
+{!! BootForm::select('category', 'Категория', $categories, $object->category()) !!}
+{!! BootForm::textarea('content', 'Текст', $object->content, ['class' => 'tinytext'] )!!}
 {!! BootForm::submit('Сохранить') !!}
 
 {{ BootForm::close() }}

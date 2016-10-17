@@ -20,10 +20,10 @@ class MenuMiddleware
             $menu->add('Записи')->data(['icon' => 'fa fa-sticky-note-o']);
             $menu->get('zapisi')
                 ->add('Список записей', ['route' => 'admin.posts']);
-            /*$menu->get('zapisi')
+            $menu->get('zapisi')
                 ->add('Новая запись', ['route' => 'admin.posts.new']);
-            
-            $menu->add('Категории')->data(['icon' => 'fa fa-bars']);
+
+            /*$menu->add('Категории')->data(['icon' => 'fa fa-bars']);
             $menu->get('kategorii')
                 ->add('Список категорий', ['route' => 'admin.categories']);
             $menu->get('kategorii')

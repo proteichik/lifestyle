@@ -169,6 +169,8 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
         Lavary\Menu\ServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        Watson\BootstrapForm\BootstrapFormServiceProvider::class,
 
         //
 
@@ -181,6 +183,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\LifestyleServiceProvider::class,
+
 
     ],
 
@@ -230,6 +233,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Menu' => Lavary\Menu\Facade::class,
+        'Form'     => Collective\Html\FormFacade::class,
+        'HTML'     => Collective\Html\HtmlFacade::class,
+        'BootForm' => Watson\BootstrapForm\Facades\BootstrapForm::class,
 
     ],
 
