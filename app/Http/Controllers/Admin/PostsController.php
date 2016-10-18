@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Contracts\Service;
 use App\Http\Controllers\Base\BaseController;
+use App\Http\Requests\StorePostRequest;
 use App\Post;
 use App\Services\BaseService;
 use Illuminate\Database\Eloquent\Model;
@@ -43,11 +44,13 @@ class PostsController extends BaseController
 
         return view($this->getView('create'), [
             'object' => $this->getModel(),
-            'route' => [
-                $this->getByConfig('form_routes.create'),
-            ],
             'categories' => $categories,
         ]);
+    }
+
+    public function createAction(StorePostRequest $request)
+    {
+        return $this->runCreate($request);
     }
 
 

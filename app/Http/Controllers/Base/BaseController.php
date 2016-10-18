@@ -101,9 +101,20 @@ abstract class BaseController extends Controller
     {
         return view($this->getView('create'), [
             'object' => $this->getModel(),
-            'route' => [
-                $this->getByConfig('form_routes.create'),
-            ],
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    protected function runCreate(Request $request)
+    {
+        $model = $this->getModel();
+        $model->fill($request->all());
+        
+        $model->save();
+        
+        return redirect()->route($this->getByConfig('redirects.create'));
     }
 }

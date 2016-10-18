@@ -14,16 +14,16 @@
         <tbody>
             @forelse ($objects as $object)
                 <tr>
-                    <td>{{ $object->getId() }}</td>
-                    <td>{{ $object->getTitle() }}</td>
-                    <td>{{ $object->getCategory()->getName() }}</td>
-                    <td>{{ $object->getCreatedAt()->format('Y-m-d H:i:s') }}</td>
+                    <td>{{ $object->id }}</td>
+                    <td>{{ $object->title }}</td>
+                    <td>{{ $object->category->name }}</td>
+                    <td>{{ $object->created_at }}</td>
                     <td>
                         <div class="btn-group btn-group-sm">
-                            <a href="{{ route('admin.posts.edit', ['id' => $object->getId()])  }}" type="button" class="btn btn-warning">
+                            <a href="#" type="button" class="btn btn-warning">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
-                            <a href="{{ route('admin.posts.delete', ['id' => $object->getId()]) }}" type="button" class="btn btn-danger" name="btn-delete">
+                            <a href="#" type="button" class="btn btn-danger" name="btn-delete">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
                         </div>

@@ -18,8 +18,8 @@ class CreatePostsTable extends Migration
             $table->string('title', 100);
             $table->string('description');
             $table->longText('content');
-            $table->boolean('publish');
-            $table->string('front_picture');
+            $table->boolean('publish')->default(0);
+            $table->string('front_picture')->nullable();
             $table->integer('category_id')->unsigned();
             $table->timestamps();
         });

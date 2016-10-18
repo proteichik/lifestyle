@@ -1,8 +1,8 @@
-{{ BootForm::open(array('route' => $route)) }}
-{!! BootForm::text('title', 'Заголовок', $object->title) !!}
-{!! BootForm::textarea('description', 'Описание', $object->description, ['rows' => 3]) !!}
-{!! BootForm::select('category', 'Категория', $categories, $object->category()) !!}
-{!! BootForm::textarea('content', 'Текст', $object->content, ['class' => 'tinytext'] )!!}
+{{ BootForm::open(['model' => $object, 'store' => 'admin.posts.new.save']) }}
+{!! BootForm::text('title', 'Заголовок') !!}
+{!! BootForm::textarea('description', 'Описание', null, ['rows' => 3]) !!}
+{!! BootForm::select('category_id', 'Категория', $categories) !!}
+{!! BootForm::textarea('content', 'Текст', null, ['class' => 'tinytext'] )!!}
 {!! BootForm::submit('Сохранить') !!}
 
 {{ BootForm::close() }}

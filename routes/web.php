@@ -29,6 +29,6 @@ Route::group(['prefix' => 'admin'], function(){
 
     Route::post('/posts/new', [
         'as' => 'admin.posts.new.save',
-        'uses' => 'Admin\PostController@createAction'
+        'uses' => 'Admin\PostsController@createAction'
     ]);
 });
