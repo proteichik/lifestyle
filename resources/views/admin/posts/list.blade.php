@@ -4,10 +4,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th>@sortablelink('q.id', 'id')</th>
-                <th>@sortablelink('q.title', 'Заголовок')</th>
-                <th>@sortablelink('c.name', 'Категория')</th>
-                <th>@sortablelink('q.createdAt', 'Дата создания')</th>
+                <th>@sortablelink('id', 'id')</th>
+                <th>@sortablelink('title', 'Заголовок')</th>
+                <th>@sortablelink('name', 'Категория')</th>
+                <th>@sortablelink('created_at', 'Дата создания')</th>
                 <th>Действия</th>
             </tr>
         </thead>
@@ -20,7 +20,7 @@
                     <td>{{ $object->created_at }}</td>
                     <td>
                         <div class="btn-group btn-group-sm">
-                            <a href="#" type="button" class="btn btn-warning">
+                            <a href="{{ route('admin.posts.update', ['id' => $object->id])  }}" type="button" class="btn btn-warning">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
                             <a href="#" type="button" class="btn btn-danger" name="btn-delete">

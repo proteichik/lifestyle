@@ -35,7 +35,7 @@ Route::group(['prefix' => 'admin'], function(){
         'as' => 'admin.posts.update',
         'uses' => 'Admin\PostsController@showUpdateForm'
     ]);
-    Route::post('/posts/{id}', [
+    Route::put('/posts/{id}', [
         'as' => 'admin.posts.update.save',
         'uses' => 'Admin\PostsController@updateAction'
     ]);

@@ -47,7 +47,7 @@ class ModelRepository implements ObjectRepository
     public function findAll($itemPerPage = null)
     {
         if (in_array(Sortable::class, class_uses($this->model))) {
-            return $this->model->sortable()->paginate($itemPerPage);
+            return $this->getBuilder()->sortable()->paginate($itemPerPage);
         }
 
         return $this->getBuilder()->paginate($itemPerPage);

@@ -9,7 +9,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    @include('admin.post.form.post', ['categories' => $categories,
+                    @include('admin.posts.form.post', ['categories' => $categories,
                     'object' => $object])
                 </div>
             </div>
