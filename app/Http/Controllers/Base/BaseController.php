@@ -17,28 +17,12 @@ abstract class BaseController extends Controller
     protected $objectManager;
 
     /**
-     * @var array
-     */
-    protected $views = [];
-
-    /**
      * BaseController constructor.
      * @param Service $objectManager
      */
     public function __construct(Service $objectManager)
     {
         $this->objectManager = $objectManager;
-        $this->views = $this->defineViews();
-    }
-
-    /**
-     * @return array
-     */
-    protected function defineViews()
-    {
-        return [
-
-        ];
     }
 
     /**
@@ -48,11 +32,13 @@ abstract class BaseController extends Controller
      */
     protected function getView($name)
     {
-        if (!isset($this->views[$name])) {
+        $view = $this->getByConfig('views.' . $name, false);
+
+        if (!$view) {
             throw new ViewNotFound($name, get_class($this));
         }
 
-        return $this->views[$name];
+        return $view;
     }
 
     /**
@@ -106,6 +92,21 @@ abstract class BaseController extends Controller
 
     /**
      * @param Request $request
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws ViewNotFound
+     */
+    public function showUpdateForm(Request $request, $id)
+    {
+        $object = $this->objectManager->findOne($id);
+
+        return view($this->getView('update'), [
+            'object' => $object,
+        ]);
+    }
+
+    /**
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     protected function runCreate(Request $request)
@@ -116,5 +117,20 @@ abstract class BaseController extends Controller
         $model->save();
         
         return redirect()->route($this->getByConfig('redirects.create'));
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    protected function runUpdate(Request $request, $id)
+    {
+        $model = $this->objectManager->findOne($id);
+        
+        $model->fill($request->all());
+        $model->save();
+
+        return redirect()->route($this->getByConfig('redirects.update'));
     }
 }

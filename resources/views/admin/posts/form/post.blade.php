@@ -1,4 +1,5 @@
-{{ BootForm::open(['model' => $object, 'store' => 'admin.posts.new.save']) }}
+{{ BootForm::open(['model' => $object, 'store' => 'admin.posts.new.save',
+'update' => 'admin.posts.update.save']) }}
 {!! BootForm::text('title', 'Заголовок') !!}
 {!! BootForm::textarea('description', 'Описание', null, ['rows' => 3]) !!}
 {!! BootForm::select('category_id', 'Категория', $categories) !!}
