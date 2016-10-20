@@ -3,6 +3,8 @@
 namespace App\Contracts;
 
 
+use Illuminate\Database\Eloquent\Model;
+
 interface ObjectRepository
 {
     /**
@@ -17,7 +19,7 @@ interface ObjectRepository
      * Поиск модели по id. Если модель не найдена - кидается Exception
      *
      * @param $id
-     * @return object
+     * @return Model
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      */
     public function findOne($id);

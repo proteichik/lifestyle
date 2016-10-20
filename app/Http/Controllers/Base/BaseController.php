@@ -133,4 +133,25 @@ abstract class BaseController extends Controller
 
         return redirect()->route($this->getByConfig('redirects.update'));
     }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $object = $this->objectManager->findOne($id);
+
+        try {
+            $this->objectManager->remove($object);
+        } catch (\Exception $ex) {
+            return ($request->isXmlHttpRequest()) ? response()->json(['result' => $ex->getMessage()], 500)
+                : redirect()->back()->withException($ex);
+        }
+
+        return ($request->isXmlHttpRequest()) ?
+            response()->json(['result' => 'success'], 200) :
+            redirect()->back();
+    }
 }

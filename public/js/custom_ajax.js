@@ -19,7 +19,7 @@ function runAjax(event, target) {
     var targetUrl = $(target).attr("href");
     $.ajax({
         url: targetUrl,
-        type: 'POST',
+        type: 'DELETE',
         beforeSend: function(request) {
             return request.setRequestHeader("X-CSRF-Token", $("meta[name='token']").attr('content'));
         }
