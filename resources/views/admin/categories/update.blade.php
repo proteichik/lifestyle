@@ -9,7 +9,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    @include('admin.category.form.category')
+                    @include('admin.categories.form.category')
                 </div>
             </div>
         </div>

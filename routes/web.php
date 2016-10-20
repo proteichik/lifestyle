@@ -16,7 +16,10 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'admin'], function(){
-
+    
+    /**
+     * POSTS
+     */
     Route::get('/', [
         'as' => 'admin.posts',
         'uses' => 'Admin\PostsController@listAction'
@@ -38,9 +41,42 @@ Route::group(['prefix' => 'admin'], function(){
     Route::put('/posts/{id}', [
         'as' => 'admin.posts.update.save',
         'uses' => 'Admin\PostsController@updateAction'
-    ])->where('id', '[0-9]+');;
+    ])->where('id', '[0-9]+');
+    
     Route::delete('/posts/{id}/remove', [
         'as' => 'admin.posts.delete',
         'uses' => 'Admin\PostsController@deleteAction'
-    ])->where('id', '[0-9]+');;
+    ])->where('id', '[0-9]+');
+
+
+    /**
+     * CATEGORIES
+     */
+    Route::get('/categories', [
+        'as' => 'admin.categories',
+        'uses' => 'Admin\CategoriesController@listAction'
+    ]);
+
+    Route::get('/categories/new', [
+        'as' => 'admin.categories.new',
+        'uses' => 'Admin\CategoriesController@showCreateForm'
+    ]);
+    Route::post('/categories/new', [
+        'as' => 'admin.categories.new.save',
+        'uses' => 'Admin\CategoriesController@createAction'
+    ]);
+
+    Route::get('/categories/{id}', [
+        'as' => 'admin.categories.update',
+        'uses' => 'Admin\CategoriesController@showUpdateForm'
+    ])->where('id', '[0-9]+');
+    Route::put('/categories/{id}', [
+        'as' => 'admin.categories.update.save',
+        'uses' => 'Admin\CategoriesController@updateAction'
+    ])->where('id', '[0-9]+');
+
+    Route::delete('/categories/{id}/remove', [
+        'as' => 'admin.categories.delete',
+        'uses' => 'Admin\CategoriesController@deleteAction'
+    ])->where('id', '[0-9]+');
 });

@@ -99,7 +99,7 @@ abstract class BaseController extends Controller
     public function showUpdateForm(Request $request, $id)
     {
         $object = $this->objectManager->findOne($id);
-
+        
         return view($this->getView('update'), [
             'object' => $object,
         ]);

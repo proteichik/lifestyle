@@ -10,6 +10,10 @@ use App\Services\BaseService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
+/**
+ * Class PostsController
+ * @package App\Http\Controllers\Admin
+ */
 class PostsController extends BaseController
 {
     /**
@@ -17,6 +21,10 @@ class PostsController extends BaseController
      */
     protected $categoryService;
 
+    /**
+     * PostsController constructor.
+     * @param Service $objectManager
+     */
     public function __construct(Service $objectManager)
     {
         parent::__construct($objectManager);
@@ -24,11 +32,19 @@ class PostsController extends BaseController
         $this->categoryService = app('CategoryService');
     }
 
+    /**
+     * @return Post
+     */
     protected function getModel()
     {
         return new Post();
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \App\Exceptions\ViewNotFound
+     */
     public function showCreateForm(Request $request)
     {
         $categories = $this->categoryService->getSelectList();
@@ -39,11 +55,21 @@ class PostsController extends BaseController
         ]);
     }
 
+    /**
+     * @param StorePostRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function createAction(StorePostRequest $request)
     {
         return $this->runCreate($request);
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \App\Exceptions\ViewNotFound
+     */
     public function showUpdateForm(Request $request, $id)
     {
         $categories = $this->categoryService->getSelectList();
@@ -54,7 +80,12 @@ class PostsController extends BaseController
             'categories' => $categories,
         ]);
     }
-    
+
+    /**
+     * @param StorePostRequest $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateAction(StorePostRequest $request, $id)
     {
         return $this->runUpdate($request, $id);

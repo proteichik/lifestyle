@@ -23,11 +23,11 @@ class MenuMiddleware
             $menu->get('zapisi')
                 ->add('Новая запись', ['route' => 'admin.posts.new']);
 
-            /*$menu->add('Категории')->data(['icon' => 'fa fa-bars']);
+            $menu->add('Категории')->data(['icon' => 'fa fa-bars']);
             $menu->get('kategorii')
                 ->add('Список категорий', ['route' => 'admin.categories']);
             $menu->get('kategorii')
-                ->add('Добавить категорию', ['route' => 'admin.categories.new']);*/
+                ->add('Добавить категорию', ['route' => 'admin.categories.new']);
             
 
         });

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Category;
 use App\Contracts\Service;
+use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Post;
 use App\Repositories\ModelRepository;
@@ -69,5 +70,12 @@ class LifestyleServiceProvider extends ServiceProvider
                return $app['PostService'];
             });
         ;
+
+        $this->app
+            ->when(CategoriesController::class)
+            ->needs(Service::class)
+            ->give(function ($app) {
+                return $app['CategoryService'];
+            });
     }
 }
