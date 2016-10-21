@@ -6,6 +6,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StorePostRequest extends FormRequest
 {
+    const FRONT_PICTURE  = 'front_picture';
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -28,4 +30,31 @@ class StorePostRequest extends FormRequest
             'content' => 'required',
         ];
     }
+
+    /**
+     * @return array
+     */
+    public function all()
+    {
+        $result = [];
+        if ($path = $this->saveFrontPicture()) {
+            $result[self::FRONT_PICTURE] = $path;
+        }
+        
+        return array_merge_recursive($result, $this->input());
+    }
+
+    /**
+     * @return bool|false|string
+     */
+    protected function saveFrontPicture()
+    {
+        if (!$this->hasFile(self::FRONT_PICTURE)) {
+            return false;
+        }
+
+        return $this->file(self::FRONT_PICTURE)->storePublicly('public');
+    }
+
+
 }

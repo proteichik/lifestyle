@@ -106,13 +106,13 @@ abstract class BaseController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param array $data
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function runCreate(Request $request)
+    protected function runCreate(array $data = array())
     {
         $model = $this->getModel();
-        $model->fill($request->all());
+        $model->fill($data);
         
         $model->save();
         
@@ -120,15 +120,15 @@ abstract class BaseController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param array $data
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function runUpdate(Request $request, $id)
+    protected function runUpdate(array $data = array(), $id)
     {
         $model = $this->objectManager->findOne($id);
         
-        $model->fill($request->all());
+        $model->fill($data);
         $model->save();
 
         return redirect()->route($this->getByConfig('redirects.update'));

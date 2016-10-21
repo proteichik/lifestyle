@@ -9,6 +9,7 @@ use App\Post;
 use App\Services\BaseService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 /**
  * Class PostsController
@@ -61,7 +62,7 @@ class PostsController extends BaseController
      */
     public function createAction(StorePostRequest $request)
     {
-        return $this->runCreate($request);
+        return $this->runCreate($request->all());
     }
 
     /**
@@ -88,7 +89,7 @@ class PostsController extends BaseController
      */
     public function updateAction(StorePostRequest $request, $id)
     {
-        return $this->runUpdate($request, $id);
+        return $this->runUpdate($request->all(), $id);
     }
 
 

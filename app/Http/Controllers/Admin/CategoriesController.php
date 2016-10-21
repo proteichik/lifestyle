@@ -27,7 +27,7 @@ class CategoriesController extends BaseController
      */
     public function createAction(StoreCategoryRequest $request)
     {
-        return $this->runCreate($request);
+        return $this->runCreate($request->all());
     }
 
     /**
@@ -37,6 +37,6 @@ class CategoriesController extends BaseController
      */
     public function updateAction(StoreCategoryRequest $request, $id)
     {
-        return $this->runUpdate($request, $id);
+        return $this->runUpdate($request->all(), $id);
     }
 }
