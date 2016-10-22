@@ -15,6 +15,7 @@ class Post extends Model
         'content',
         'category_id',
         'front_picture',
+        'publish'
     ];
 
     public $sortable = ['id',

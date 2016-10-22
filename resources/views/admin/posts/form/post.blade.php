@@ -1,14 +1,21 @@
-{{ BootForm::open(['model' => $object, 'store' => 'admin.posts.new.save',
+<div class="row">
+    {{ BootForm::open(['model' => $object, 'store' => 'admin.posts.new.save',
 'update' => 'admin.posts.update.save', 'files' => true]) }}
-{!! BootForm::text('title', 'Заголовок') !!}
-{!! BootForm::textarea('description', 'Описание', null, ['rows' => 3]) !!}
-{!! BootForm::select('category_id', 'Категория', $categories) !!}
-{!! BootForm::textarea('content', 'Текст', null, ['class' => 'tinytext'] )!!}
+    {!! BootForm::hidden('publish', 0) !!}
+    <div class="col-md-9">
 
-{!! BootForm::file('front_picture', 'Логотип поста') !!}
-{!! BootForm::submit('Сохранить') !!}
-
-{{ BootForm::close() }}
+        {!! BootForm::text('title', 'Заголовок') !!}
+        {!! BootForm::textarea('description', 'Описание', null, ['rows' => 3]) !!}
+        {!! BootForm::select('category_id', 'Категория', $categories) !!}
+        {!! BootForm::textarea('content', 'Текст', null, ['class' => 'tinytext'] )!!}
+        {!! BootForm::submit('Сохранить') !!}
+    </div>
+    <div class="col-md-3">
+        {!! BootForm::checkbox('publish', 'Опубликованно') !!}
+        {!! BootForm::file('front_picture', 'Логотип поста') !!}
+    </div>
+    {{ BootForm::close() }}
+</div>
 
 <script src="{{ asset('js/tiny_init.js') }}"></script>
 

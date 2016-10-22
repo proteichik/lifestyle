@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostForeignKey extends Migration
+class AddCountViewsToPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class CreatePostForeignKey extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->integer('count_views')->default(0);
         });
     }
 
@@ -26,7 +26,7 @@ class CreatePostForeignKey extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropForeign('posts_category_id_foreign');
+            $table->dropColumn('count_views');
         });
     }
 }
