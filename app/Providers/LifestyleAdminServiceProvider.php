@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Post;
 use App\Repositories\ModelRepository;
-use App\Repositories\PostsRepository;
+use App\Repositories\Admin\PostsRepository;
 use App\Services\BaseService;
 use Illuminate\Support\ServiceProvider;
 
