@@ -14,7 +14,7 @@ class PostsRepository extends ModelRepository
      */
    public function findBySlug($slug)
    {
-        return Post::where('slug', $slug)->firstOrFail();
+        return $this->getBuilder()->where('slug', $slug)->firstOrFail();
    }
 
     /**

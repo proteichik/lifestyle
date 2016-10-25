@@ -7,7 +7,7 @@
                 <th>@sortablelink('id', 'id')</th>
                 <th>@sortablelink('title', 'Заголовок')</th>
                 <th>@sortablelink('name', 'Категория')</th>
-                <th>@sortablelink('count_views', 'Количество просмотров')</th>
+                <th>@sortablelink('count_views', 'Просмотров')</th>
                 <th>@sortablelink('created_at', 'Дата создания')</th>
                 <th>Действия</th>
             </tr>
@@ -18,6 +18,7 @@
                     <td>{{ $object->id }}</td>
                     <td>{{ $object->title }}</td>
                     <td>{{ $object->category->name }}</td>
+                    <td>{{ $object->count_views }}</td>
                     <td>{{ $object->created_at }}</td>
                     <td>
                         <div class="btn-group btn-group-sm">
