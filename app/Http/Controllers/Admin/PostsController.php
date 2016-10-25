@@ -30,7 +30,7 @@ class PostsController extends BaseController
     {
         parent::__construct($objectManager);
 
-        $this->categoryService = app('CategoryService');
+        $this->categoryService = app('Admin\CategoryService');
     }
 
     /**

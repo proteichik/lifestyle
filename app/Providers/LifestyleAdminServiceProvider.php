@@ -12,7 +12,7 @@ use App\Repositories\PostsRepository;
 use App\Services\BaseService;
 use Illuminate\Support\ServiceProvider;
 
-class LifestyleServiceProvider extends ServiceProvider
+class LifestyleAdminServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -41,20 +41,20 @@ class LifestyleServiceProvider extends ServiceProvider
     protected function bindServices()
     {
         //Repositories
-        $this->app->bind('PostRepository', function () {
+        $this->app->bind('Admin\PostRepository', function () {
             return new PostsRepository(new Post());
         });
-        $this->app->bind('CategoryRepository', function () {
+        $this->app->bind('Admin\CategoryRepository', function () {
             return new ModelRepository(new Category());
         });
 
 
         //Services
-        $this->app->bind('PostService', function ($app) {
-            return new BaseService($app['PostRepository']);
+        $this->app->bind('Admin\PostService', function ($app) {
+            return new BaseService($app['Admin\PostRepository']);
         });
-        $this->app->bind('CategoryService', function ($app) {
-            return new BaseService($app['CategoryRepository']);
+        $this->app->bind('Admin\CategoryService', function ($app) {
+            return new BaseService($app['Admin\CategoryRepository']);
         });
     }
 
@@ -67,7 +67,7 @@ class LifestyleServiceProvider extends ServiceProvider
             ->when(PostsController::class)
             ->needs(Service::class)
             ->give(function($app) {
-               return $app['PostService'];
+               return $app['Admin\PostService'];
             });
         ;
 
@@ -75,7 +75,7 @@ class LifestyleServiceProvider extends ServiceProvider
             ->when(CategoriesController::class)
             ->needs(Service::class)
             ->give(function ($app) {
-                return $app['CategoryService'];
+                return $app['Admin\CategoryService'];
             });
     }
 }
