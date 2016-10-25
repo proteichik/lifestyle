@@ -3,6 +3,7 @@
 namespace App\Repositories\Admin;
 
 use App\Post;
+use App\Repositories\ModelRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Kyslik\ColumnSortable\Sortable;
 
