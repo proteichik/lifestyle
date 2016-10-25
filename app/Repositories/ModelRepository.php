@@ -28,7 +28,7 @@ class ModelRepository implements ObjectRepository
      */
     public function find($id)
     {
-        return $this->model->newQuery()->find($id);
+        return $this->getBuilder()->find($id);
     }
 
     /**
@@ -37,7 +37,7 @@ class ModelRepository implements ObjectRepository
      */
     public function findOne($id)
     {
-        return $this->model->newQuery()->findOrFail($id);
+        return $this->getBuilder()->findOrFail($id);
     }
 
     /**
