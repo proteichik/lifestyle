@@ -21,6 +21,7 @@ class Post extends Model
         'title',
         'created_at',
         'category_id',
+        'count_views',
         ];
 
     /**
