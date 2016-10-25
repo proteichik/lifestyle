@@ -6,7 +6,6 @@ use App\Category;
 use App\Contracts\Service;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\PostsController;
-use App\Observers\PostObserver;
 use App\Post;
 use App\Repositories\ModelRepository;
 use App\Repositories\PostsRepository;
@@ -22,7 +21,7 @@ class LifestyleServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Post::observe(PostObserver::class);
+        //
     }
 
     /**
