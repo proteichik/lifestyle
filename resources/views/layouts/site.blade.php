@@ -1,20 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Lifestyle</title>
-        @section('meta')
+<head>
+    <title>Lifestyle</title>
+    @section('meta')
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    @show
 
-        @show
+    @section('stylesheets')
+        <link href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    @show
 
-        @section('stylesheets')
+    @section('js_head')
+        <script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
+    @show
+</head>
+<body>
+    <div class="banner-body">
+        <div class="container">
 
-        @show
+            @section('header')
+                <div class="header">
+                    <div class="header-nav">
+                        <nav class="navbar navbar-default">
 
-        @section('js_head')
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="#"><span>L</span>ifestyle</a>
+                            </div>
 
-        @show
-    </head>
-    <body>
+                        </nav>
+                    </div>
+                </div>
+            @show
 
-    </body>
+            <div class="blog">
+                <div class="blog-left">
+
+                </div>
+                <div class="blog-right">
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+@section('javascripts')
+    <script src="{{ asset('vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+@show
+</body>
 </html>
