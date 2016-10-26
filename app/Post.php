@@ -34,6 +34,14 @@ class Post extends Model
     }
 
     /**
+     * У поста есть комментарии (one to many)
+     */
+    public function comments()
+    {
+        $this->hasMany(Comment::class);
+    }
+
+    /**
      * @return string
      */
     public function __toString()

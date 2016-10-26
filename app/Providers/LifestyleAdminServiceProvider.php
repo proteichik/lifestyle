@@ -10,9 +10,8 @@ use App\Post;
 use App\Repositories\ModelRepository;
 use App\Repositories\Admin\PostsRepository;
 use App\Services\BaseService;
-use Illuminate\Support\ServiceProvider;
 
-class LifestyleAdminServiceProvider extends ServiceProvider
+class LifestyleAdminServiceProvider extends LifestyleServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -22,17 +21,6 @@ class LifestyleAdminServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-    }
-
-    /**
-     * Register the application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->bindServices();
-        $this->bindContextual();
     }
 
     /**
