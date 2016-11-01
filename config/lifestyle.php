@@ -25,4 +25,10 @@ return [
             'update' => 'admin.categories.update',
         ],
     ],
+    \App\Http\Controllers\Site\PostsController::class => [
+        'item_per_page' => 20,
+        'views' => [
+            'list' => 'site.posts.list',
+        ],
+    ]
 ];

@@ -80,3 +80,10 @@ Route::group(['prefix' => 'admin'], function(){
         'uses' => 'Admin\CategoriesController@deleteAction'
     ])->where('id', '[0-9]+');
 });
+
+Route::group(['prefix' => 'blog'], function () {
+    Route::get('/', [
+        'as' => 'site.posts',
+        'uses' => 'Site\PostsController@listAction'
+    ]);
+});

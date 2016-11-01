@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCategoryForeignKey extends Migration
+class ChangeTypeFieldDescriptionInPosts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddCategoryForeignKey extends Migration
      */
     public function up()
     {
-        Schema::table('comments', function (Blueprint $table) {
-            $table->foreign('post_id')->references('id')->on('posts');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->text('description')->change();
         });
     }
 
@@ -25,8 +25,8 @@ class AddCategoryForeignKey extends Migration
      */
     public function down()
     {
-        Schema::table('comments', function (Blueprint $table) {
-            $table->dropForeign('comments_post_id_foreign');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->string('description', 255)->change();
         });
     }
 }

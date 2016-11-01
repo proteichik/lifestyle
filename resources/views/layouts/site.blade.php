@@ -34,13 +34,15 @@
             @show
 
             <div class="blog">
-                <div class="blog-left">
-
-                </div>
-                <div class="blog-right">
-
-                </div>
-                <div class="clearfix"></div>
+                @section('content')
+                    <div class="blog-left">
+                        @yield('blog-left')
+                    </div>
+                    <div class="blog-right">
+                        @yield('blog-right')
+                    </div>
+                    <div class="clearfix"></div>
+                @show
             </div>
         </div>
     </div>

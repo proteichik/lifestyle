@@ -11,7 +11,8 @@
         "kyslik/column-sortable": "^5.1",
         "barryvdh/laravel-debugbar": "^2.3",
         "watson/bootstrap-form": "^1.0",
-        "lavary/laravel-menu": "^1.6"
+        "lavary/laravel-menu": "^1.6",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

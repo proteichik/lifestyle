@@ -15,7 +15,8 @@ class PostsRepository extends ModelRepository
             ->model
             ->newQuery()
             ->with('category')
-            ->where('publish', '=', 1);
+            ->where('publish', '=', 1)
+            ->orderBy('created_at', 'desc');
     }
 
 }

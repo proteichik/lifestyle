@@ -21,6 +21,10 @@ html, body{
    font-family:LobsterTwo-Italic;
 	 src: url(../fonts/LobsterTwo-Italic.ttf) format('truetype');
 }
+@font-face {
+	font-family: Alexander;
+	src: url(../fonts/bradobrei.ttf) format('truetype');
+}
 p{
 	margin:0;
 }
@@ -593,8 +597,7 @@ a.sint:before{
 	font-size: 25px;
 	margin: 0;
 	color: #c34c21;
-	font-family: LobsterTwo-Regular;
-	text-transform: capitalize;
+	font-family: Alexander;
 }
 .blog-left-grid-left h3 a{
 	color: #c34c21;
@@ -651,7 +654,7 @@ a.quod:before{
 	background: url(../images/img-sp.png) no-repeat 61px -191px #F04709;
 	display: block;
 }
-.blog-left-grid:nth-child(2){
+.blog-left-grid{
 	margin:3em 0 0;
 }
 /******** SAP ************/
