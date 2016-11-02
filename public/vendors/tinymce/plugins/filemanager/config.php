@@ -16,8 +16,8 @@ $root = rtrim($_SERVER['DOCUMENT_ROOT'],'/'); // don't touch this configuration
 //   |    |   |    |-   |- filemanager
 //   |    |   |    |-   |-      |- thumbs <- folder of thumbs [must have the write permission]
 
-$base_url="http://laravel-blog.loc"; //url base of site if you want only relative url leave empty
-$upload_dir = '/images/'; // path from base_url to upload base dir
+$base_url="http://lifestyle.loc"; //url base of site if you want only relative url leave empty
+$upload_dir = '/images'; // path from base_url to upload base dir
 $current_path = '../../../../images/'; // relative path from filemanager folder to upload files folder
 
 $MaxSizeUpload=100; //Mb
