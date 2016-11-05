@@ -29,6 +29,7 @@ return [
         'item_per_page' => 20,
         'views' => [
             'list' => 'site.posts.list',
+            'post' => 'site.posts.view',
         ],
     ]
 ];

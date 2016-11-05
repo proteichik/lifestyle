@@ -86,4 +86,9 @@ Route::group(['prefix' => 'blog'], function () {
         'as' => 'site.posts',
         'uses' => 'Site\PostsController@listAction'
     ]);
+    
+    Route::get('/{id}', [
+        'as'=> 'site.post',
+        'uses' => 'Site\PostsController@viewPostAction',
+    ]);
 });

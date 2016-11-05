@@ -33,17 +33,7 @@
                 </div>
             @show
 
-            <div class="blog">
-                @section('content')
-                    <div class="blog-left">
-                        @yield('blog-left')
-                    </div>
-                    <div class="blog-right">
-                        @yield('blog-right')
-                    </div>
-                    <div class="clearfix"></div>
-                @show
-            </div>
+            @yield('content')
         </div>
     </div>
 @section('javascripts')
