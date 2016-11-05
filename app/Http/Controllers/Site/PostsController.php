@@ -27,6 +27,7 @@ class PostsController extends BaseController
     {
         $post = $this->objectManager->findOne($id);
 
+        $post->timestamps = false;
         $post->count_views++;
         $post->save();
         
