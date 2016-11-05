@@ -76,6 +76,18 @@ class ModelRepository implements ObjectRepository
 
         return $list;
     }
+    
+    public function getList(array $order = array())
+    {
+        $qb = $this->getBuilder();
+
+        if (isset($order['column'])) {
+            $qb->orderBy($order['column'],
+                (isset($order['direction'])) ? $order['direction'] : 'asc');
+        }
+
+        return $qb->get();
+    }
 
 
 }

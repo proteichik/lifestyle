@@ -185,6 +185,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\LifestyleAdminServiceProvider::class,
         \App\Providers\LifestyleSiteServiceProvider::class,
+        \App\Providers\ComposerServiceProvider::class,
 
 
     ],

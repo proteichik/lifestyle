@@ -46,4 +46,12 @@ interface ObjectRepository
      * @return mixed
      */
     public function getSelectList(array $order = array());
+
+    /**
+     * Получить все данные без сортировки и пагинации
+     *
+     * @param array $order
+     * @return mixed
+     */
+    public function getList(array $order = array());
 }

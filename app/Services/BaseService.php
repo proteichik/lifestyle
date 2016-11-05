@@ -101,4 +101,11 @@ class BaseService implements Service
     {
         return $this->repository->getSelectList($order);
     }
+
+    public function getList(array $order = array())
+    {
+        return $this->repository->getList($order);
+    }
+
+
 }

@@ -32,7 +32,14 @@
             @endforeach
         </div>
         <div class="blog-right">
-
+            <div class="pgs">
+                <h3>Категории</h3>
+                <ul>
+                    @foreach($categories as $category)
+                        <li><a href="#">{{ $category->name }}</a></li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
         <div class="clearfix"></div>
     </div>
