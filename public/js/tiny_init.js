@@ -6,10 +6,10 @@ tinymce.init({
     remove_script_host : false,
     convert_urls : true,
     plugins: [
-        'advlist autolink lists link image charmap print preview hr anchor filemanager pagebreak',
+        'advlist autolink lists link image charmap print preview hr anchor pagebreak',
         'searchreplace wordcount visualblocks visualchars code fullscreen',
         'insertdatetime media nonbreaking save table contextmenu directionality',
-        'emoticons template paste textcolor colorpicker textpattern imagetools'
+        'emoticons template paste textcolor colorpicker textpattern imagetools responsivefilemanager'
     ],
     toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
     toolbar2: 'print preview media | forecolor backcolor emoticons',
@@ -23,5 +23,8 @@ tinymce.init({
     image_class_list: [
         {title: 'Responsive', value: 'img-responsive'},
         {title: 'None', value: ''}
-    ]
+    ],
+    external_filemanager_path:"/vendors/tinymce/filemanager/",
+    filemanager_title:"Responsive Filemanager",
+    external_plugins: { "filemanager" : "filemanager/plugin.min.js"}
 });
