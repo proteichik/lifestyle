@@ -91,4 +91,9 @@ Route::group(['prefix' => 'blog'], function () {
         'as'=> 'site.post',
         'uses' => 'Site\PostsController@viewPostAction',
     ]);
+
+    Route::post('/comment/new', [
+        'as' => 'site.comment.new.save',
+        'uses' => 'Site\CommentsController@createAction'
+    ]);
 });

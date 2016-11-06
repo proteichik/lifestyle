@@ -31,5 +31,10 @@ return [
             'list' => 'site.posts.list',
             'post' => 'site.posts.view',
         ],
-    ]
+    ],
+    \App\Http\Controllers\Site\CommentsController::class => [
+        'redirects' => [
+            'create' => 'back',
+        ],
+    ],
 ];

@@ -116,7 +116,10 @@ abstract class BaseController extends Controller
         
         $model->save();
         
-        return redirect()->route($this->getByConfig('redirects.create'));
+        $redirect = $this->getByConfig('redirects.create');
+        
+        return ($redirect === 'back') ? redirect()->back()
+            : redirect()->route($this->getByConfig('redirects.create'));
     }
 
     /**
