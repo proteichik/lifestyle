@@ -7,19 +7,21 @@
                 <div class="blog-left-grid">
                     {{-- Заголовок --}}
                     <div class="blog-left-grid-left">
-                        <h3><a href="#">{{ $post->title }}</a></h3>
-                        <p> {{ $post->created_at->format('Y-m-d H:i:s')  }} </p>
+                        <h3><a href="{{ route('site.post', [$post->id]) }}">{{ $post->title }}</a></h3>
+                        <p> {{ $post->created_at->format('Y-m-d H:i:s')  }} |
+                            <span>{{ $post->category->name }}</span>
+                        </p>
                     </div>
 
                     {{-- Комментарии --}}
                     <div class="blog-left-grid-right">
-                        <a href="#" class="hvr-bounce-to-bottom non">20 Comments</a>
+                        <a href="{{ route('site.post', [$post->id]) }}" class="hvr-bounce-to-bottom non">{{ count($post->comments) }} Comments</a>
                     </div>
                     <div class="clearfix"> </div>
 
                     {{-- Картинка --}}
                     @if($post->front_picture)
-                        <a href="#"><img src="{{ $post->front_picture }}" alt=" " class="img-responsive" /></a>
+                        <a href="{{ route('site.post', [$post->id]) }}"><img src="{{ $post->front_picture }}" alt=" " class="img-responsive" /></a>
                     @endif
                     {{-- Краткое описание --}}
                     <p class="para">{{ $post->description }}</p>

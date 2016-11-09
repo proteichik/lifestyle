@@ -11,23 +11,26 @@
        </div>
 
        <div class="artical-links">
-           <ul>
-               <li><small> </small><span>June 30, 2015</span></li>
-               <li><a href="#"><small class="admin"> </small><span>admin</span></a></li>
-               <li><a href="#"><small class="no"> </small><span>No comments</span></a></li>
-               <li><a href="#"><small class="posts"> </small><span>View posts</span></a></li>
-               <li><a href="#"><small class="link"> </small><span>permalink</span></a></li>
-           </ul>
+           {{--<ul>--}}
+               {{--<li><small> </small><span>{{ $post->created_at }}</span></li>--}}
+               {{--<li><a href="#"><small class="admin"> </small><span></span></a></li>--}}
+               {{--<li><a href="#"><small class="no"> </small><span></span></a></li>--}}
+               {{--<li><a href="#"><small class="posts"> </small><span></span></a></li>--}}
+               {{--<li><a href="#"><small class="link"> </small><span></span></a></li>--}}
+           {{--</ul>--}}
        </div>
 
        <div class="comment-grid-top">
-           <h3>Responses</h3>
-           @foreach($comments as $comment)
+           @if (count($post->comments) > 0)
+               <h3>Responses</h3>
+           @endif
+
+           @foreach($post->comments as $comment)
                <div class="comments-top-top">
                    <div class="top-comment-right">
                        <ul>
                            <li><span class="left-at"><a href="#">{{ $comment->author }}</a></span></li>
-                           <li><span class="right-at">June 30, 2015 at 10.30am</span></li>
+                           <li><span class="right-at">{{ $comment->created_at->format('Y-m-d H:i:s') }}</span></li>
                        </ul>
                        <p>{{ $comment->content }}</p>
                    </div>

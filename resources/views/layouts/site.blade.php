@@ -25,7 +25,7 @@
                         <nav class="navbar navbar-default">
 
                             <div class="navbar-header">
-                                <a class="navbar-brand" href="#"><span>L</span>ifestyle</a>
+                                <a class="navbar-brand" href=" {{ route('site.posts') }}"><span>L</span>ifestyle</a>
                             </div>
 
                         </nav>
