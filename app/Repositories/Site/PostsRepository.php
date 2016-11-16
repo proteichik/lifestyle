@@ -3,11 +3,12 @@
 namespace App\Repositories\Site;
 
 use App\Repositories\ModelRepository;
+use Illuminate\Database\Eloquent\Builder;
 
 class PostsRepository extends ModelRepository
 {
     /**
-     * @return $this
+     * @return mixed
      */
     public function getBuilder()
     {

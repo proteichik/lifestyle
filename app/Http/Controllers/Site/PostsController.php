@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Category;
+use App\Contracts\ObjectRepository;
 use App\Http\Controllers\Base\BaseController;
 use App\Post;
 use Illuminate\Database\Eloquent\Model;
@@ -33,6 +35,18 @@ class PostsController extends BaseController
         
         return view($this->getView('post'), [
             'post' => $post,      
+        ]);
+    }
+
+    public function getByCategoryAction(Request $request, $categoryId)
+    {
+        $objects = $this->objectManager
+            ->getBuilder()
+            ->where('category_id', '=', $categoryId)
+            ->paginate();
+        
+        return view($this->getView('list'), [
+            'objects' => $objects,
         ]);
     }
 }

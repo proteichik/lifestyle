@@ -21,7 +21,7 @@
 
                     {{-- Картинка --}}
                     @if($post->front_picture)
-                        <a href="{{ route('site.post', [$post->id]) }}"><img src="{{ $post->front_picture }}" alt=" " class="img-responsive" /></a>
+                        <a href="{{ route('site.post', [$post->id]) }}"><img src="{{ asset($post->front_picture) }}" alt=" " class="img-responsive img-title" /></a>
                     @endif
                     {{-- Краткое описание --}}
                     <p class="para">{{ $post->description }}</p>
@@ -32,13 +32,14 @@
                     </div>
                 </div>
             @endforeach
+            {{ $objects->render() }}
         </div>
         <div class="blog-right">
             <div class="pgs">
                 <h3>Категории</h3>
                 <ul>
                     @foreach($categories as $category)
-                        <li><a href="#">{{ $category->name }}</a></li>
+                        <li><a href="{{ route('site.posts.by_category', [$category->id]) }}">{{ $category->name }}</a></li>
                     @endforeach
                 </ul>
             </div>

@@ -16,8 +16,21 @@ abstract class LifestyleServiceProvider extends ServiceProvider
     {
         $this->bindContextual();
         $this->bindServices();
+        $this->bindPrimitives();
     }
     
-    abstract protected function bindServices();
-    abstract protected function bindContextual();
+    protected function bindServices()
+    {
+
+    }
+
+    protected function bindContextual()
+    {
+        
+    }
+
+    protected function bindPrimitives()
+    {
+
+    }
 }

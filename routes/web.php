@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('site.posts');
 });
 
 Route::group(['prefix' => 'admin'], function(){
@@ -95,5 +95,10 @@ Route::group(['prefix' => 'blog'], function () {
     Route::post('/comment/new', [
         'as' => 'site.comment.new.save',
         'uses' => 'Site\CommentsController@createAction'
+    ]);
+
+    Route::get('/category/{categoryId}', [
+        'as' => 'site.posts.by_category',
+        'uses' => 'Site\PostsController@getByCategoryAction'
     ]);
 });

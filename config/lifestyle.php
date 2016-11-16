@@ -26,7 +26,7 @@ return [
         ],
     ],
     \App\Http\Controllers\Site\PostsController::class => [
-        'item_per_page' => 20,
+        'item_per_page' => 10,
         'views' => [
             'list' => 'site.posts.list',
             'post' => 'site.posts.view',

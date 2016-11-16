@@ -65,5 +65,4 @@ class LifestyleSiteServiceProvider extends LifestyleServiceProvider
             });
     }
 
-
 }

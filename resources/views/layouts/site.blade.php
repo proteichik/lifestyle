@@ -28,6 +28,15 @@
                                 <a class="navbar-brand" href=" {{ route('site.posts') }}"><span>L</span>ifestyle</a>
                             </div>
 
+                            <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+
+                                <div class="sign-in">
+                                    <ul>
+                                        <li><a href="{{ route('admin.posts') }}">Sign In </a></li>
+                                    </ul>
+                                </div>
+                            </div><!-- /.navbar-collapse -->
+
                         </nav>
                     </div>
                 </div>
