@@ -15,7 +15,7 @@ Route::get('/', function () {
     return redirect()->route('site.posts');
 });
 
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     
     /**
      * POSTS
@@ -102,3 +102,15 @@ Route::group(['prefix' => 'blog'], function () {
         'uses' => 'Site\PostsController@getByCategoryAction'
     ]);
 });
+
+Route::get('login', [
+    'as' => 'login',
+    'uses' => 'Auth\LoginController@showLoginForm',
+]);
+Route::post('login', [
+    'uses' => 'Auth\LoginController@login',
+]);
+Route::get('logout', [
+    'as' => 'logout',
+    'uses' => 'Auth\LoginController@logout',
+]);
