@@ -9,6 +9,8 @@
     @section('stylesheets')
         <link href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="{{ asset('vendors/fontawesome/css/font-awesome.min.css') }}" rel="stylesheet">
     @show
 
     @section('js_head')

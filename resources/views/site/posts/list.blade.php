@@ -32,7 +32,7 @@
                     </div>
                 </div>
             @endforeach
-            {{ $objects->render() }}
+            {{ $objects->links('vendor.pagination.simple-custom') }}
         </div>
         <div class="blog-right">
             <div class="pgs">

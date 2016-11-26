@@ -86,7 +86,7 @@
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
                                 <li><a href="{{ route('site.posts') }}">  Блог</a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-sign-out pull-right"></i> Выход</a>
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out pull-right"></i> Выход</a>
                                 </li>
                             </ul>
                         </li>
