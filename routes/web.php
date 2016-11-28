@@ -101,6 +101,11 @@ Route::group(['prefix' => 'blog'], function () {
         'as' => 'site.posts.by_category',
         'uses' => 'Site\PostsController@getByCategoryAction'
     ]);
+    
+    Route::get('/comment/{id}/delete', [
+        'as' => 'site.post.comment.delete',
+        'uses' => 'Site\CommentsController@deleteAction'
+    ]);
 });
 
 Route::get('login', [

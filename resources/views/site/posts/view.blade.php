@@ -20,7 +20,7 @@
            {{--</ul>--}}
        </div>
 
-       <div class="comment-grid-top">
+       <div class="comment-grid-top" id="comments">
            @if (count($post->comments) > 0)
                <h3>Responses</h3>
            @endif
@@ -31,6 +31,11 @@
                        <ul>
                            <li><span class="left-at"><a href="#">{{ $comment->author }}</a></span></li>
                            <li><span class="right-at">{{ $comment->created_at->format('Y-m-d H:i:s') }}</span></li>
+                           @can('delete', $comment)
+                           <li>
+                               <a href="{{ route('site.post.comment.delete', ['id' => $comment->id]) }}" class="comment-delete">Удалить</a>
+                           </li>
+                           @endcan
                        </ul>
                        <p>{{ $comment->content }}</p>
                    </div>
