@@ -12,7 +12,7 @@
                     <h5>Password:</h5>
                     <input id="password" type="password" name="password" required>
                     <input type="checkbox" name="remember"> Запомнить меня
-                    <input type="submit" value="Login">
+                    <input type="submit" value="Войти">
                 </form>
             </div>
             <div class="clearfix"></div>
