@@ -1703,7 +1703,7 @@ p.lom{
 	text-align: left;
 	margin: 1em 0;
 }
-.artical-content img {
+.artical-content img.img-responsive {
   width: 100%;
 }
 .artical-links ul li span {
