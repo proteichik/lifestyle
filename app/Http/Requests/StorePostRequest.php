@@ -54,7 +54,7 @@ class StorePostRequest extends FormRequest
             return false;
         }
 
-        return $this->file(self::FRONT_PICTURE)->storePublicly('public');
+        return $this->file(self::FRONT_PICTURE)->storePublicly('pictures');
     }
 
 
