@@ -5,7 +5,7 @@
         <thead>
             <tr>
                 <th>@sortablelink('id', 'id')</th>
-                <th>@sortablelink('title', 'Заголовок')</th>
+                <th width="45%">@sortablelink('title', 'Заголовок')</th>
                 <th>@sortablelink('name', 'Категория')</th>
                 <th>@sortablelink('count_views', 'Просмотров')</th>
                 <th>@sortablelink('created_at', 'Дата создания')</th>

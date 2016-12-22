@@ -222,7 +222,6 @@ a.navbar-brand:hover {
 	margin-top:19.59em;
 }
 .banner-inf h3{
-	text-transform:capitalize;
 	font-size:2em;
 	margin:0;
 	color:#fff;
@@ -640,7 +639,7 @@ a.non:before{
 	background:#F04709;
 }
 p.para{
-	color:#999;
+	color:#000;;
 	font-size:14px;
 	margin:1em 0 2em;
 	line-height:1.8em;
@@ -875,7 +874,6 @@ ul.tab_list{
 	-moz-transition:.5s all;
 	-o-transition:.5s all;
 	-ms-transition:.5s all;
-	text-transform:capitalize;
 }
 .pgs ul li a:hover{
 	text-decoration:none;
@@ -1568,14 +1566,13 @@ p.lom{
 .artical-content h3{
 	color: #C34C21;
 	text-align: left;
-	text-transform: capitalize;
 	padding: 3em 0 1.5em;
 	font-size:2em;
 	margin: 0;
 	font-family: LobsterTwo-Regular;
 }
-.artical-content p {
-	color: #999;
+.artical-content {
+	color: #2F2E2E;
 	font-size: 14px;
 	line-height: 1.8em;
 	margin: 1em 0;
