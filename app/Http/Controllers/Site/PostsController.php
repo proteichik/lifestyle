@@ -8,6 +8,7 @@ use App\Http\Controllers\Base\BaseController;
 use App\Post;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Auth;
 
 class PostsController extends BaseController
 {
@@ -29,9 +30,11 @@ class PostsController extends BaseController
     {
         $post = $this->objectManager->findOne($id);
 
-        $post->timestamps = false;
-        $post->count_views++;
-        $post->save();
+        if (!Auth::check()) {
+            $post->timestamps = false;
+            $post->count_views++;
+            $post->save();
+        }
         
         return view($this->getView('post'), [
             'post' => $post,      
