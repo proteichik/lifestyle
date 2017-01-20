@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lifestyle</title>
+    <title>@yield('page_title') Lifestyle</title>
     @section('meta')
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     @show

@@ -1,5 +1,13 @@
 @extends('layouts.site')
 
+@section('page_title') {{ $post->title }} - @endsection
+
+@section('meta')
+    @parent
+    <meta property="og:image" content="{{ asset($post->front_picture) }}" />
+    <meta property="og:description" content="{{ $post->description }}" />
+@endsection
+
 @section('content')
    <div class="single-page-artical">
        <div class="artical-content">
