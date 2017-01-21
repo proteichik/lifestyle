@@ -11,6 +11,7 @@ use App\Post;
 use App\Repositories\ModelRepository;
 use App\Repositories\Site\PostsRepository;
 use App\Services\BaseService;
+use App\Tag;
 
 class LifestyleSiteServiceProvider extends LifestyleServiceProvider
 {
@@ -36,6 +37,9 @@ class LifestyleSiteServiceProvider extends LifestyleServiceProvider
         $this->app->bind('Site\CommentRepository', function () {
             return new ModelRepository(new Comment());
         });
+        $this->app->bind('Site\TagRepository', function () {
+            return new ModelRepository(new Tag());
+        });
 
 
         //Services
@@ -47,6 +51,9 @@ class LifestyleSiteServiceProvider extends LifestyleServiceProvider
         });
         $this->app->bind('Site\CommentService', function ($app) {
             return new BaseService($app['Site\CommentRepository']);
+        });
+        $this->app->bind('Site\TagService', function ($app) {
+            return new BaseService($app['Site\TagRepository']);
         });
     }
 

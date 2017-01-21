@@ -23,6 +23,10 @@ class PostsController extends BaseController
     protected $categoryService;
 
     /**
+     * @var BaseService
+     */
+    protected $tagsService;
+    /**
      * PostsController constructor.
      * @param Service $objectManager
      */
@@ -31,6 +35,7 @@ class PostsController extends BaseController
         parent::__construct($objectManager);
 
         $this->categoryService = app('Admin\CategoryService');
+        $this->tagsService = app('Admin\TagService');
     }
 
     /**
@@ -49,10 +54,12 @@ class PostsController extends BaseController
     public function showCreateForm(Request $request)
     {
         $categories = $this->categoryService->getSelectList();
+        $tags = $this->tagsService->getSelectList();
 
         return view($this->getView('create'), [
             'object' => $this->getModel(),
             'categories' => $categories,
+            'tags' => $tags,
         ]);
     }
 
@@ -62,23 +69,31 @@ class PostsController extends BaseController
      */
     public function createAction(StorePostRequest $request)
     {
-        return $this->runCreate($request->all());
+        $model = $this->getModel();
+        $model->tags()->sync($request->input('tags', []));
+        return $this->runCreate($request->all(), $model);
     }
 
     /**
      * @param Request $request
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      * @throws \App\Exceptions\ViewNotFound
      */
     public function showUpdateForm(Request $request, $id)
     {
         $categories = $this->categoryService->getSelectList();
-        $object = $this->objectManager->findOne($id);
+        $tags = $this->tagsService->getSelectList();
 
+        /** @var Post $object */
+        $object = $this->objectManager->findOne($id);
+        
         return view($this->getView('update'), [
             'object' => $object,
             'categories' => $categories,
+            'tags' => $tags,
+            'selectedTags' => $object->tags->pluck('name','id')->all()
         ]);
     }
 
@@ -86,11 +101,15 @@ class PostsController extends BaseController
      * @param StorePostRequest $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      */
     public function updateAction(StorePostRequest $request, $id)
     {
-        return $this->runUpdate($request->all(), $id);
-    }
+        /** @var Post $model */
+        $model = $this->objectManager->findOne($id);
+        $model->tags()->sync($request->input('tags', []));
 
+        return $this->runUpdate($request->all(), $id, $model);
+    }
 
 }

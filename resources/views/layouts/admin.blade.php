@@ -13,6 +13,8 @@
     <link href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="{{ asset('vendors/fontawesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!--Chosen-->
+    <link href="{{ asset('vendors/chosen/chosen.css') }}" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     @show
@@ -114,6 +116,8 @@
 @section('javascripts')
 <!-- Bootstrap -->
 <script src="{{ asset('vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!--Chosen-->
+<script src="{{ asset('vendors/chosen/chosen.jquery.min.js') }}"></script>
 <!-- Custom Theme Scripts -->
 <script src="{{ asset('js/custom.js') }}"></script>
 <script src="{{ asset('js/custom_ajax.js') }}"></script>

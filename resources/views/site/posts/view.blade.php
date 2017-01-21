@@ -19,13 +19,12 @@
        </div>
 
        <div class="artical-links">
-           {{--<ul>--}}
-               {{--<li><small> </small><span>{{ $post->created_at }}</span></li>--}}
-               {{--<li><a href="#"><small class="admin"> </small><span></span></a></li>--}}
-               {{--<li><a href="#"><small class="no"> </small><span></span></a></li>--}}
-               {{--<li><a href="#"><small class="posts"> </small><span></span></a></li>--}}
-               {{--<li><a href="#"><small class="link"> </small><span></span></a></li>--}}
-           {{--</ul>--}}
+           <ul>
+               @forelse ($post->tags as $tag)
+                   <li><span><a href="{{ route('site.posts.by_tag', [$tag->slug]) }}">#{{ $tag->name }}</a></span></li> |
+               @empty
+               @endforelse
+           </ul>
        </div>
 
        <div class="comment-grid-top" id="comments">

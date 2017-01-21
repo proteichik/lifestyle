@@ -25,6 +25,18 @@ return [
             'update' => 'admin.categories.update',
         ],
     ],
+    \App\Http\Controllers\Admin\TagsController::class => [
+        'item_per_page' => 10,
+        'redirects' => [
+            'create' => 'admin.tags',
+            'update' => 'admin.tags',
+        ],
+        'views' => [
+            'list' => 'admin.tags.list',
+            'create' => 'admin.tags.create',
+            'update' => 'admin.tags.update',
+        ],
+    ],
     \App\Http\Controllers\Site\PostsController::class => [
         'item_per_page' => 10,
         'views' => [

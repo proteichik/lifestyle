@@ -107,11 +107,12 @@ abstract class BaseController extends Controller
 
     /**
      * @param array $data
+     * @param Model $model
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function runCreate(array $data = array())
+    protected function runCreate(array $data = array(), Model $model = null)
     {
-        $model = $this->getModel();
+        $model = (null === $model) ? $this->getModel() : $model;
         $model->fill($data);
         
         $model->save();
@@ -125,11 +126,12 @@ abstract class BaseController extends Controller
     /**
      * @param array $data
      * @param $id
+     * @param Model $model
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function runUpdate(array $data = array(), $id)
+    protected function runUpdate(array $data, $id, Model $model = null)
     {
-        $model = $this->objectManager->findOne($id);
+        $model = (null === $model) ? $this->objectManager->findOne($id) : $model;
         
         $model->fill($data);
         $model->save();

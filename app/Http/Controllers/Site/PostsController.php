@@ -6,6 +6,8 @@ use App\Category;
 use App\Contracts\ObjectRepository;
 use App\Http\Controllers\Base\BaseController;
 use App\Post;
+use App\Services\BaseService;
+use App\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Auth;
@@ -50,6 +52,19 @@ class PostsController extends BaseController
         
         return view($this->getView('list'), [
             'objects' => $objects,
+        ]);
+    }
+
+    public function getByTagAction(Request $request, $slug)
+    {
+        /** @var Tag $tag */
+        $tag = app('Site\TagService')
+            ->getBuilder()
+            ->where('slug', '=', $slug)
+            ->get()->first();
+
+        return view($this->getView('list'), [
+            'objects' => $tag->posts()->paginate($this->getByConfig('item_per_page')),
         ]);
     }
 }

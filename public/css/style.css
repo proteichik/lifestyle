@@ -1530,9 +1530,6 @@ p.lom{
 .artical-links ul li{
 	display:inline-block;
 }
-.artical-links ul li:last-child{
-	float:right;
-}
 .artical-links ul li a span{
 	vertical-align:top;
 }

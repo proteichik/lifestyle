@@ -6,10 +6,12 @@ use App\Category;
 use App\Contracts\Service;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\PostsController;
+use App\Http\Controllers\Admin\TagsController;
 use App\Post;
 use App\Repositories\ModelRepository;
 use App\Repositories\Admin\PostsRepository;
 use App\Services\BaseService;
+use App\Tag;
 
 class LifestyleAdminServiceProvider extends LifestyleServiceProvider
 {
@@ -35,6 +37,9 @@ class LifestyleAdminServiceProvider extends LifestyleServiceProvider
         $this->app->bind('Admin\CategoryRepository', function () {
             return new ModelRepository(new Category());
         });
+        $this->app->bind('Admin\TagRepository', function () {
+            return new ModelRepository(new Tag());
+        });
 
 
         //Services
@@ -43,6 +48,9 @@ class LifestyleAdminServiceProvider extends LifestyleServiceProvider
         });
         $this->app->bind('Admin\CategoryService', function ($app) {
             return new BaseService($app['Admin\CategoryRepository']);
+        });
+        $this->app->bind('Admin\TagService', function ($app) {
+            return new BaseService($app['Admin\TagRepository']);
         });
     }
 
@@ -64,6 +72,13 @@ class LifestyleAdminServiceProvider extends LifestyleServiceProvider
             ->needs(Service::class)
             ->give(function ($app) {
                 return $app['Admin\CategoryService'];
+            });
+
+        $this->app
+            ->when(TagsController::class)
+            ->needs(Service::class)
+            ->give(function ($app) {
+                return $app['Admin\TagService'];
             });
     }
 }

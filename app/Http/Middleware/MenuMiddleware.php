@@ -28,7 +28,12 @@ class MenuMiddleware
                 ->add('Список категорий', ['route' => 'admin.categories']);
             $menu->get('kategorii')
                 ->add('Добавить категорию', ['route' => 'admin.categories.new']);
-            
+
+            $menu->add('Теги')->data(['icon' => 'fa fa-bars']);
+            $menu->get('tegi')
+                ->add('Список тегов', ['route' => 'admin.tags']);
+            $menu->get('tegi')
+                ->add('Добавить тег', ['route' => 'admin.tags.new']);
 
         });
 

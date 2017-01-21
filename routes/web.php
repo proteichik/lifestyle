@@ -79,6 +79,36 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'as' => 'admin.categories.delete',
         'uses' => 'Admin\CategoriesController@deleteAction'
     ])->where('id', '[0-9]+');
+    
+    /**
+     * Tags
+     */
+    Route::get('/tags', [
+        'as' => 'admin.tags',
+        'uses' => 'Admin\TagsController@listAction'
+    ]);
+    Route::get('/tags/new', [
+        'as' => 'admin.tags.new',
+        'uses' => 'Admin\TagsController@showCreateForm'
+    ]);
+    Route::post('/tags/new', [
+        'as' => 'admin.tags.new.save',
+        'uses' => 'Admin\TagsController@createAction'
+    ]);
+
+    Route::get('/tags/{id}', [
+        'as' => 'admin.tags.update',
+        'uses' => 'Admin\TagsController@showUpdateForm'
+    ])->where('id', '[0-9]+');
+    Route::put('/tags/{id}', [
+        'as' => 'admin.tags.update.save',
+        'uses' => 'Admin\TagsController@updateAction'
+    ])->where('id', '[0-9]+');
+
+    Route::delete('/tags/{id}/remove', [
+        'as' => 'admin.tags.delete',
+        'uses' => 'Admin\TagsController@deleteAction'
+    ])->where('id', '[0-9]+');
 });
 
 Route::group(['prefix' => 'blog'], function () {
@@ -100,6 +130,11 @@ Route::group(['prefix' => 'blog'], function () {
     Route::get('/category/{categoryId}', [
         'as' => 'site.posts.by_category',
         'uses' => 'Site\PostsController@getByCategoryAction'
+    ]);
+
+    Route::get('/tag/{tagId}', [
+        'as' => 'site.posts.by_tag',
+        'uses' => 'Site\PostsController@getByTagAction'
     ]);
     
     Route::get('/comment/{id}/delete', [
