@@ -57,14 +57,16 @@ class PostsController extends BaseController
 
     public function getByTagAction(Request $request, $slug)
     {
-        /** @var Tag $tag */
-        $tag = app('Site\TagService')
+        $objects = $this->objectManager
             ->getBuilder()
-            ->where('slug', '=', $slug)
-            ->get()->first();
+            ->join('post_tags', 'post_tags.post_id' , '=', 'posts.id')
+            ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
+            ->where('tags.slug', '=', $slug)
+            ->select('posts.*', 'tags.name', 'tags.slug')
+            ->paginate();
 
         return view($this->getView('list'), [
-            'objects' => $tag->posts()->paginate($this->getByConfig('item_per_page')),
+            'objects' => $objects,
         ]);
     }
 }

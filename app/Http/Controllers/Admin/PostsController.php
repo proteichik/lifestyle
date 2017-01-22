@@ -70,8 +70,9 @@ class PostsController extends BaseController
     public function createAction(StorePostRequest $request)
     {
         $model = $this->getModel();
+        $response = $this->runCreate($request->all(), $model);
         $model->tags()->sync($request->input('tags', []));
-        return $this->runCreate($request->all(), $model);
+        return $response;
     }
 
     /**
@@ -93,7 +94,6 @@ class PostsController extends BaseController
             'object' => $object,
             'categories' => $categories,
             'tags' => $tags,
-            'selectedTags' => $object->tags->pluck('name','id')->all()
         ]);
     }
 

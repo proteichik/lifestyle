@@ -18,7 +18,7 @@ class PostsRepository extends ModelRepository
             ->with('category')
             ->with('comments')
             ->where('publish', '=', 1)
-            ->orderBy('created_at', 'desc');
+            ->orderBy('posts.created_at', 'desc');
     }
 
 }
