@@ -22,6 +22,8 @@ tinymce.init({
     toolbar: "image",
     image_class_list: [
         {title: 'Responsive', value: 'img-responsive'},
+        {title: 'Responsive canter', value: 'img-responsive center-block'},
+        {title: 'Center', value: 'center-block'},
         {title: 'None', value: ''}
     ],
     external_filemanager_path:"/vendors/tinymce/filemanager/",
