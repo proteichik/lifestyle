@@ -594,7 +594,7 @@ a.sint:before{
 }
 .blog-left-grid-left{
 	float:left;
-	width:80%;
+	width:75%;
 	margin-bottom: 3em;
 }
 .blog-left-grid-left h3{
@@ -620,7 +620,7 @@ a.sint:before{
 }
 .blog-left-grid-right{
 	float:right;
-	width:20%;
+	width:25%;
 	margin: .8em 0 0;
 }
 .blog-left-grid-right a{
