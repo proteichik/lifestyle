@@ -39,7 +39,7 @@
                 <h3>Категории</h3>
                 <ul>
                     @foreach($categories as $category)
-                        <li><a href="{{ route('site.posts.by_category', [$category->id]) }}">{{ $category->name }}</a></li>
+                        <li><a href="{{ route('site.posts.by_category', [$category->id]) }}">{{ $category->name }} ({{  $category->posts->count()}})</a></li>
                     @endforeach
                 </ul>
             </div>
