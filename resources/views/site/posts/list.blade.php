@@ -39,7 +39,7 @@
                 <h3>Категории</h3>
                 <ul>
                     @foreach($categories as $category)
-                        <li><a href="{{ route('site.posts.by_category', [$category->id]) }}">{{ $category->name }} <span class="badge badge-pill badge-secondary">{{  $category->posts()->wherePublish(1)->count()}}</span></a></li>
+                        <li><a href="{{ route('site.posts.by_category', [$category->id]) }}">{{ $category->name }} </a> <span class="label label-danger pull-right">{{  $category->posts()->wherePublish(1)->count()}}</span></li>
                     @endforeach
                 </ul>
             </div>
