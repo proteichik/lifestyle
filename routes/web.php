@@ -79,6 +79,43 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'as' => 'admin.categories.delete',
         'uses' => 'Admin\CategoriesController@deleteAction'
     ])->where('id', '[0-9]+');
+
+    Route::get('/categories/{id}/sub-categories', [
+        'as' => 'admin.categories.sub-categories',
+        'uses' => 'Admin\CategoriesController@showSubcategoriesAction'
+    ])->where('id', '[0-9]+');
+
+    /**
+     * SubCategories
+     */
+
+    Route::get('/sub-categories', [
+        'as' => 'admin.subcategories',
+        'uses' => 'Admin\SubCategoriesController@listAction'
+    ]);
+
+    Route::get('/sub-categories/new', [
+        'as' => 'admin.subcategories.new',
+        'uses' => 'Admin\SubCategoriesController@showCreateForm'
+    ]);
+    Route::post('/sub-categories/new', [
+        'as' => 'admin.subcategories.new.save',
+        'uses' => 'Admin\SubCategoriesController@createAction'
+    ]);
+
+    Route::get('/sub-categories/{id}', [
+        'as' => 'admin.subcategories.update',
+        'uses' => 'Admin\SubCategoriesController@showUpdateForm'
+    ])->where('id', '[0-9]+');
+    Route::put('/sub-categories/{id}', [
+        'as' => 'admin.subcategories.update.save',
+        'uses' => 'Admin\SubCategoriesController@updateAction'
+    ])->where('id', '[0-9]+');
+
+    Route::delete('/sub-categories/{id}/remove', [
+        'as' => 'admin.subcategories.delete',
+        'uses' => 'Admin\SubCategoriesController@deleteAction'
+    ])->where('id', '[0-9]+');
     
     /**
      * Tags

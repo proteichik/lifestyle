@@ -19,6 +19,30 @@ class Category extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function subCategories()
+    {
+        return $this->hasMany(Subcategory::class);
+    }
+
+    public function getSubcategoriesSelectList()
+    {
+        $subCategoriesList = [];
+        /** @var Subcategory $subCategory */
+        foreach ($this->subCategories as $subCategory)
+        {
+            $subCategoriesList[] = [
+                'id' => $subCategory->id,
+                'name' => $subCategory->name,
+            ];
+
+        }
+
+        return $subCategoriesList;
+    }
+
+    /**
      * @return string
      */
     public function __toString()

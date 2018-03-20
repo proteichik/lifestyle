@@ -7,6 +7,7 @@
         {!! BootForm::text('title', 'Заголовок') !!}
         {!! BootForm::textarea('description', 'Описание', null, ['rows' => 3]) !!}
         {!! BootForm::select('category_id', 'Категория', $categories) !!}
+        {!! BootForm::select('subcategory_id', 'Подкатегория', []) !!}
         {!! BootForm::textarea('content', 'Текст', null, ['class' => 'tinytext'] )!!}
         {!! BootForm::select('tags', 'Теги', $tags, array_flip($object->tags->pluck('name','id')->all()), ['multiple' => 'multiple', 'name' => 'tags[]']) !!}
         {!! BootForm::submit('Сохранить') !!}

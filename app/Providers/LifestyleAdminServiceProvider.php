@@ -6,11 +6,14 @@ use App\Category;
 use App\Contracts\Service;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\PostsController;
+use App\Http\Controllers\Admin\SubCategoriesController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Post;
+use App\Repositories\Admin\SubcategoriesRepository;
 use App\Repositories\ModelRepository;
 use App\Repositories\Admin\PostsRepository;
 use App\Services\BaseService;
+use App\Subcategory;
 use App\Tag;
 
 class LifestyleAdminServiceProvider extends LifestyleServiceProvider
@@ -40,6 +43,9 @@ class LifestyleAdminServiceProvider extends LifestyleServiceProvider
         $this->app->bind('Admin\TagRepository', function () {
             return new ModelRepository(new Tag());
         });
+        $this->app->bind('Admin\SubcategoryRepository', function(){
+            return new SubcategoriesRepository(new Subcategory());
+        });
 
 
         //Services
@@ -51,6 +57,9 @@ class LifestyleAdminServiceProvider extends LifestyleServiceProvider
         });
         $this->app->bind('Admin\TagService', function ($app) {
             return new BaseService($app['Admin\TagRepository']);
+        });
+        $this->app->bind('Admin\SubcategoryService', function($app){
+            return new BaseService($app['Admin\SubcategoryRepository']);
         });
     }
 
@@ -79,6 +88,13 @@ class LifestyleAdminServiceProvider extends LifestyleServiceProvider
             ->needs(Service::class)
             ->give(function ($app) {
                 return $app['Admin\TagService'];
+            });
+
+        $this->app
+            ->when(SubCategoriesController::class)
+            ->needs(Service::class)
+            ->give(function($app){
+                return $app['Admin\SubcategoryService'];
             });
     }
 }

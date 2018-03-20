@@ -14,6 +14,7 @@ class Post extends Model
         'description',
         'content',
         'category_id',
+        'subcategory_id',
         'front_picture',
         'publish'
     ];
@@ -31,6 +32,14 @@ class Post extends Model
     public function category()
     {
        return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * У поста может быть подкатегория (many to one)
+     */
+    public function subcategory()
+    {
+        return $this->belongsTo(Subcategory::class);
     }
 
     /**

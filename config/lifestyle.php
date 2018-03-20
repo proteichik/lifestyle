@@ -49,4 +49,16 @@ return [
             'create' => 'back',
         ],
     ],
+    \App\Http\Controllers\Admin\SubCategoriesController::class => [
+        'item_per_page' => 10,
+        'redirects' => [
+            'create' => 'admin.subcategories',
+            'update' => 'admin.subcategories',
+        ],
+        'views' => [
+            'list' => 'admin.subcategories.list',
+            'create' => 'admin.subcategories.create',
+            'update' => 'admin.subcategories.update',
+        ],
+    ],
 ];

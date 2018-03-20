@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Http\Controllers\Base\BaseController;
 use App\Http\Requests\StoreCategoryRequest;
+use App\Subcategory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 /**
  * Class CategoriesController
@@ -39,4 +41,18 @@ class CategoriesController extends BaseController
     {
         return $this->runUpdate($request->all(), $id);
     }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return array
+     */
+    public function showSubcategoriesAction(Request $request, $id)
+    {
+        /** @var Category $category */
+        $category = $this->objectManager->findOne($id);
+
+       return $category->getSubcategoriesSelectList();
+    }
+
 }
