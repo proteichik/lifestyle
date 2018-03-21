@@ -19,6 +19,7 @@ class CreationCommentsTable extends Migration
             $table->text('content');
             $table->integer('post_id')->unsigned();
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

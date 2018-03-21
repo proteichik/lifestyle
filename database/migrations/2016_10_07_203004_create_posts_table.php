@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('front_picture')->nullable();
             $table->integer('category_id')->unsigned();
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

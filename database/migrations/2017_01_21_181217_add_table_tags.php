@@ -18,6 +18,7 @@ class AddTableTags extends Migration
             $table->string('name', 150);
             $table->string('slug');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

@@ -16,6 +16,7 @@ class AddPostTagsTable extends Migration
         Schema::create('post_tags', function (Blueprint $table) {
             $table->unsignedInteger('post_id');
             $table->unsignedInteger('tag_id');
+            $table->engine = 'InnoDB';
         });
     }
 

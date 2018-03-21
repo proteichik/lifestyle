@@ -17,6 +17,7 @@ class CreateSubcategoriesTable extends Migration
             $table->increments('id');
             $table->string('name', 150);
             $table->integer('category_id')->unsigned();;
+            $table->engine = 'InnoDB';
         });
     }
 
