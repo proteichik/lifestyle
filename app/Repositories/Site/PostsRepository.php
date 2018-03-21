@@ -17,6 +17,7 @@ class PostsRepository extends ModelRepository
             ->newQuery()
             ->with('category')
             ->with('comments')
+            ->with('subcategory')
             ->where('publish', '=', 1)
             ->orderBy('posts.created_at', 'desc');
     }

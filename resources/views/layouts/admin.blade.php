@@ -31,7 +31,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="{{ URL::route('admin.posts') }}" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+                    <a href="{{ URL::route('admin.posts') }}" class="site_title"><i class="fa fa-paw"></i> <span>life-style.by</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -40,7 +40,7 @@
                 <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section">
-                        <h3>Welcome, </h3>
+                        <h3>Welcome, {{ Auth::user()->name }}</h3>
                         <br />
                         <ul class="nav side-menu">
                             @include('admin.menu.custom-menu-items', array('items' => $mainMenu->roots()))

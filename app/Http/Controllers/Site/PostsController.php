@@ -55,6 +55,19 @@ class PostsController extends BaseController
         ]);
     }
 
+    public function getByCategoryAndSubcategoryAction(Request $request, $categoryId, $subcategoryId)
+    {
+        $objects = $this->objectManager
+            ->getBuilder()
+            ->where('category_id', '=', $categoryId)
+            ->where('subcategory_id', '=', $subcategoryId)
+            ->paginate();
+
+        return view($this->getView('list'), [
+            'objects' => $objects,
+        ]);
+    }
+
     public function getByTagAction(Request $request, $slug)
     {
         $objects = $this->objectManager

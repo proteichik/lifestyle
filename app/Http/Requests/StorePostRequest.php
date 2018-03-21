@@ -41,6 +41,11 @@ class StorePostRequest extends FormRequest
         if ($path = $this->saveFrontPicture()) {
             $result[self::FRONT_PICTURE] = $path;
         }
+
+        $subCategoryId = $this->input('subcategory_id');
+        if (!isset($subCategoryId)) {
+            $result['subcategory_id'] = null;
+        }
         
         return array_merge_recursive($result, $this->input());
     }

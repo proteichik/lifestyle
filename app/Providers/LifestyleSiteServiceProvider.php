@@ -9,6 +9,7 @@ use App\Http\Controllers\Site\CommentsController;
 use App\Http\Controllers\Site\PostsController;
 use App\Post;
 use App\Repositories\ModelRepository;
+use App\Repositories\Site\CategoriesRepository;
 use App\Repositories\Site\PostsRepository;
 use App\Services\BaseService;
 use App\Tag;
@@ -32,7 +33,7 @@ class LifestyleSiteServiceProvider extends LifestyleServiceProvider
             return new PostsRepository(new Post());
         });
         $this->app->bind('Site\CategoryRepository', function () {
-            return new ModelRepository(new Category());
+            return new CategoriesRepository(new Category());
         });
         $this->app->bind('Site\CommentRepository', function () {
             return new ModelRepository(new Comment());

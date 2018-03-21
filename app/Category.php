@@ -26,7 +26,7 @@ class Category extends Model
         return $this->hasMany(Subcategory::class);
     }
 
-    public function getSubcategoriesSelectList()
+    public function getSubcategoriesArray()
     {
         $subCategoriesList = [];
         /** @var Subcategory $subCategory */
@@ -37,6 +37,18 @@ class Category extends Model
                 'name' => $subCategory->name,
             ];
 
+        }
+
+        return $subCategoriesList;
+    }
+
+    public function getSubcategoriesSelectList()
+    {
+        $subCategoriesList = [];
+        /** @var Subcategory $subCategory */
+        foreach ($this->subCategories as $subCategory)
+        {
+            $subCategoriesList[$subCategory->id] = $subCategory->name;
         }
 
         return $subCategoriesList;

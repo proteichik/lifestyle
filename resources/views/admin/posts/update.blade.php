@@ -1,5 +1,10 @@
 @extends('layouts.admin')
 
+@section('javascripts')
+    @parent
+    <script src="{{ asset('js/subcategories.js') }}"></script>
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-xs-12">

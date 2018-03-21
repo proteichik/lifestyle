@@ -865,6 +865,15 @@ ul.tab_list{
 	border-bottom: 1px dotted;
 	padding: 0 0 20px 24px;
 }
+
+.pgs ul li.subcat {
+	margin: 15px 0;
+	background:url(../images/img-sp.png) no-repeat -37px -235px;
+	display: block;
+	list-style-type: none;
+	border-bottom: none;
+	padding: 0 0 0px 24px;
+}
 .pgs ul li a{
 	font-size:14px;
 	color: #c34c21;

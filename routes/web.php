@@ -169,6 +169,12 @@ Route::group(['prefix' => 'blog'], function () {
         'uses' => 'Site\PostsController@getByCategoryAction'
     ]);
 
+    Route::get('/category/{categoryId}/{subcategoryId}', [
+        'as' => 'site.posts.by_category_and_subcategory',
+        'uses' => 'Site\PostsController@getByCategoryAndSubcategoryAction'
+    ]);
+
+
     Route::get('/tag/{tagId}', [
         'as' => 'site.posts.by_tag',
         'uses' => 'Site\PostsController@getByTagAction'

@@ -9,7 +9,11 @@
                     <div class="blog-left-grid-left">
                         <h3><a href="{{ route('site.post', [$post->id]) }}">{{ $post->title }}</a></h3>
                         <p> {{ $post->created_at->format('Y-m-d H:i:s')  }} |
-                            <span>{{ $post->category->name }}</span>
+                            @if($post->subcategory instanceof \App\Subcategory)
+                                <span>{{ $post->category->name }} <i class="fa fa-angle-double-right"></i> {{ $post->subcategory->name }}</span>
+                            @else
+                                <span>{{ $post->category->name }}</span>
+                            @endif
                         </p>
                     </div>
 
@@ -39,7 +43,19 @@
                 <h3>Категории</h3>
                 <ul>
                     @foreach($categories as $category)
-                        <li><a href="{{ route('site.posts.by_category', [$category->id]) }}">{{ $category->name }} </a> <span class="label label-danger pull-right">{{  $category->posts()->wherePublish(1)->count()}}</span></li>
+                            @if (count($category->subcategories) > 0)
+                            <li><a href="{{ route('site.posts.by_category', [$category->id]) }}">{{ $category->name }} </a> <span class="label label-default pull-right">{{  $category->posts()->wherePublish(1)->count()}}</span>
+                                <ul>
+                                    @foreach($category->subcategories as $subcategory)
+                                        <li class="subcat">
+                                            <a href="{{ route('site.posts.by_category_and_subcategory', [$category->id, $subcategory->id]) }}">{{ $subcategory->name }}</a> <span class="label label-danger pull-right">{{  $subcategory->posts()->wherePublish(1)->count()}}</span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @else
+                            <li><a href="{{ route('site.posts.by_category', [$category->id]) }}">{{ $category->name }} </a> <span class="label label-danger pull-right">{{  $category->posts()->wherePublish(1)->count()}}</span>
+                            @endif
+                        </li>
                     @endforeach
                 </ul>
             </div>

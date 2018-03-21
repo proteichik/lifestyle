@@ -29,7 +29,7 @@ class MenuMiddleware
             $menu->get('kategorii')
                 ->add('Добавить категорию', ['route' => 'admin.categories.new']);
 
-            $menu->add('Подкатегории')->data(['icon' => 'fa fa-bars']);
+            $menu->add('Подкатегории')->data(['icon' => 'fa fa-list-ul']);
             $menu->get('podkategorii')
                 ->add('Список подкатегорий', ['route' => 'admin.subcategories']);
             $menu->get('podkategorii')

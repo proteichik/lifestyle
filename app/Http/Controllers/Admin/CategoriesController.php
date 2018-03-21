@@ -52,7 +52,7 @@ class CategoriesController extends BaseController
         /** @var Category $category */
         $category = $this->objectManager->findOne($id);
 
-       return $category->getSubcategoriesSelectList();
+       return $category->getSubcategoriesArray();
     }
 
 }

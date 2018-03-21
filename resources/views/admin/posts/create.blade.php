@@ -2,6 +2,11 @@
 
 @section('javascripts')
     @parent
+    <script>
+        $(document).ready(function(){
+            showSubCategories($("#category_id").val());
+        });
+    </script>
     <script src="{{ asset('js/subcategories.js') }}"></script>
 @endsection
 
