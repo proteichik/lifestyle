@@ -55,6 +55,7 @@ class CreateUser extends Command
             'name' => $this->argument('name'),
             'email' => $this->argument('email'),
             'password' => bcrypt($this->argument('password')),
+            'is_admin' => true,
         ]);
 
         $this->info(sprintf('User created. Id: %s', $user->id));
