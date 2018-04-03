@@ -46,7 +46,7 @@ class MenuMiddleware
 
             $commentsCount = Comment::where('is_publish', false)->count();
 
-            $menu->add('Коментарии')->data(['icon' => 'fa fa-comments', 'badge' => $commentsCount]);
+            $menu->add('Коментарии')->data(['icon' => 'fa fa-comments', 'badge' => $commentsCount > 0 ? $commentsCount : null]);
             $menu->get('komentarii')
                 ->add('На модерации', ['route' => 'admin.comments']);
 
