@@ -4,11 +4,11 @@
     <table class="table">
         <thead>
         <tr>
-            <th>@sortablelink('id', 'id')</th>
-            <th>@sortablelink('author', 'Автор')</th>
-            <th>@sortablelink('post.title', 'Пост')</th>
-            <th width="50%">@sortablelink('content', 'Текст')</th>
-            <th>Действия</th>
+            <th width="5%">@sortablelink('id', 'id')</th>
+            <th width="20%">@sortablelink('author', 'Автор')</th>
+            <th width="25%">@sortablelink('post.title', 'Пост')</th>
+            <th width="40%">@sortablelink('content', 'Текст')</th>
+            <th width="10%">Действия</th>
         </tr>
         </thead>
         <tbody>
