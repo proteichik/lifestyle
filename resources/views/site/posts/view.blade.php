@@ -28,11 +28,11 @@
        </div>
 
        <div class="comment-grid-top" id="comments">
-           @if (count($post->comments) > 0)
+           @if (count($post->publishedComments) > 0)
                <h3>Responses</h3>
            @endif
 
-           @foreach($post->comments as $comment)
+           @foreach($post->publishedComments as $comment)
                <div class="comments-top-top">
                    <div class="top-comment-right">
                        <ul>

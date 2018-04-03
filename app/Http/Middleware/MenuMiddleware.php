@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Comment;
 use Closure;
 use Menu;
 
@@ -16,6 +17,7 @@ class MenuMiddleware
      */
     public function handle($request, Closure $next)
     {
+
         Menu::make('mainMenu', function($menu) {
             $menu->add('Записи')->data(['icon' => 'fa fa-sticky-note-o']);
             $menu->get('zapisi')
@@ -41,6 +43,13 @@ class MenuMiddleware
                 ->add('Список тегов', ['route' => 'admin.tags']);
             $menu->get('tegi')
                 ->add('Добавить тег', ['route' => 'admin.tags.new']);
+
+            $commentsCount = Comment::where('is_publish', false)->count();
+
+            $menu->add('Коментарии')->data(['icon' => 'fa fa-comments', 'badge' => $commentsCount]);
+            $menu->get('komentarii')
+                ->add('На модерации', ['route' => 'admin.comments']);
+
 
         });
 

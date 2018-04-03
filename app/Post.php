@@ -43,11 +43,19 @@ class Post extends Model
     }
 
     /**
-     * У поста есть комментарии (one to many)
+     * Все комментарии
      */
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    /**
+     * Опубликованные комментарии
+     */
+    public function publishedComments()
+    {
+        return $this->hasMany(Comment::class)->where('comments.is_publish', '=', true);
     }
 
     /**

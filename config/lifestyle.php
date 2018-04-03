@@ -61,4 +61,15 @@ return [
             'update' => 'admin.subcategories.update',
         ],
     ],
+    \App\Http\Controllers\Admin\CommentsController::class => [
+        'item_per_page' => 10,
+        'redirects' => [
+            'approve' => 'admin.comments',
+            'delete' => 'admin.comments',
+        ],
+        'views' => [
+            'list' => 'admin.comments.list',
+            'view' => 'admin.comments.view'
+        ],
+    ],
 ];

@@ -155,8 +155,12 @@ abstract class BaseController extends Controller
                 : redirect()->back()->withException($ex);
         }
 
+        $httpRedirect = $this->getByConfig('redirects.delete') ?
+            redirect()->route($this->getByConfig('redirects.delete')) :
+            redirect()->back();
+
         return ($request->isXmlHttpRequest()) ?
             response()->json(['result' => 'success'], 200) :
-            redirect()->back();
+            $httpRedirect;
     }
 }

@@ -2,7 +2,8 @@
   <li@lm-attrs($item) @if($item->hasChildren())class ="dropdown"@endif @lm-endattrs>
     @if($item->link) <a@lm-attrs($item->link) @if($item->hasChildren()) class="dropdown-toggle" data-toggle="dropdown" @endif @lm-endattrs href="{!! $item->url() !!}">
       @if($item->icon) <i class="{{ $item->icon }}"></i> @endif
-      {!! $item->title !!}
+      {!! $item->title !!} &nbsp;
+    @if($item->badge)<span class="badge badge-secondary">{{ $item->badge }}</span> @endif
       @if($item->hasChildren()) <span class="fa fa-chevron-down"></span> @endif
     </a>
     @else

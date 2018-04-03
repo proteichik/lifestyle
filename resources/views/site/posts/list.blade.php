@@ -19,7 +19,7 @@
 
                     {{-- Комментарии --}}
                     <div class="blog-left-grid-right">
-                        <a href="{{ route('site.post', [$post->id, '#comments']) }}" class="hvr-bounce-to-bottom non">{{ count($post->comments) }} Comments</a>
+                        <a href="{{ route('site.post', [$post->id, '#comments']) }}" class="hvr-bounce-to-bottom non">{{ count($post->publishedComments) }} Comments</a>
                     </div>
                     <div class="clearfix"> </div>
 

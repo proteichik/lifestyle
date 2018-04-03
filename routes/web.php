@@ -146,6 +146,27 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'as' => 'admin.tags.delete',
         'uses' => 'Admin\TagsController@deleteAction'
     ])->where('id', '[0-9]+');
+
+    /**
+     * Comments
+     */
+
+    Route::get('/comments', [
+        'as' => 'admin.comments',
+        'uses' => 'Admin\CommentsController@listAction'
+    ]);
+    Route::get('/comments/{id}', [
+        'as' => 'admin.comments.view',
+        'uses' => 'Admin\CommentsController@viewAction'
+    ])->where('id', '[0-9]+');
+    Route::match(['get', 'post'],'/comments/{id}/approve', [
+        'as' => 'admin.comments.approve',
+        'uses' => 'Admin\CommentsController@approveAction'
+    ])->where('id', '[0-9]+');
+    Route::match(['get', 'delete'], '/comments/{id}/remove', [
+        'as' => 'admin.comments.delete',
+        'uses' => 'Admin\CommentsController@deleteAction'
+    ])->where('id', '[0-9]+');
 });
 
 Route::group(['prefix' => 'blog'], function () {

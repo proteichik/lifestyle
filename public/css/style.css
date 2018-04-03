@@ -1611,7 +1611,7 @@ p.lom{
 	font-size: 1em;
 	background-color: #f4f4f4;
 }
-.table-form input[type="submit"] {
+.table-form button[name="submit"] {
 	background: #C34C21;
 	color: #fff;
 	font-size: 1.2em;
@@ -1622,6 +1622,9 @@ p.lom{
 	margin: 0.8em 0 0;
 	font-family: LobsterTwo-Regular;
 }
+
+
+
 .table-form input[type="submit"]:hover{
 	background:#F04709;
 	transition: 0.5s all;

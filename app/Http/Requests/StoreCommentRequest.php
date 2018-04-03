@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreCommentRequest extends FormRequest
 {
@@ -28,5 +29,14 @@ class StoreCommentRequest extends FormRequest
             'content' => 'required|max:400',
             'post_id' => 'required|integer',
         ];
+    }
+
+    /**
+     * @param null $keys
+     * @return array
+     */
+    public function all($keys = null)
+    {
+        return array_merge_recursive(['is_publish' => Auth::check()], $this->input());
     }
 }

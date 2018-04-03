@@ -3,12 +3,15 @@
 namespace App\Providers;
 
 use App\Category;
+use App\Comment;
 use App\Contracts\Service;
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\CommentsController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\SubCategoriesController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Post;
+use App\Repositories\Admin\CommentsRepository;
 use App\Repositories\Admin\SubcategoriesRepository;
 use App\Repositories\ModelRepository;
 use App\Repositories\Admin\PostsRepository;
@@ -46,6 +49,9 @@ class LifestyleAdminServiceProvider extends LifestyleServiceProvider
         $this->app->bind('Admin\SubcategoryRepository', function(){
             return new SubcategoriesRepository(new Subcategory());
         });
+        $this->app->bind('Admin\CommentRepository', function(){
+            return new CommentsRepository(new Comment());
+        });
 
 
         //Services
@@ -60,6 +66,9 @@ class LifestyleAdminServiceProvider extends LifestyleServiceProvider
         });
         $this->app->bind('Admin\SubcategoryService', function($app){
             return new BaseService($app['Admin\SubcategoryRepository']);
+        });
+        $this->app->bind('Admin\CommentService', function($app){
+            return new BaseService($app['Admin\CommentRepository']);
         });
     }
 
@@ -95,6 +104,13 @@ class LifestyleAdminServiceProvider extends LifestyleServiceProvider
             ->needs(Service::class)
             ->give(function($app){
                 return $app['Admin\SubcategoryService'];
+            });
+
+        $this->app
+            ->when(CommentsController::class)
+            ->needs(Service::class)
+            ->give(function($app){
+                return $app['Admin\CommentService'];
             });
     }
 }
